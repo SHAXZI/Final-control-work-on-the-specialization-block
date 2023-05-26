@@ -25,16 +25,16 @@ ___
 
 2. Создать директорию, переместить файл туда.
 
-![Task 1](Task 2.png)
+![Task 2](https://github.com/pashtetrus33/pet-management-system/blob/main/Task%202.png)
 
 3. Подключить дополнительный репозиторий MySQL. Установить любой пакет из этого репозитория.
 
-![Task 1](Task 3a.png)
-![Task 1](Task 3b.png)
+![Task 3a](https://github.com/pashtetrus33/pet-management-system/blob/main/Task%203a.png)
+![Task 3b](https://github.com/pashtetrus33/pet-management-system/blob/main/Task%203b.png)
 
 4. Установить и удалить deb-пакет с помощью dpkg.
    
-![Task 1](Task 4.png)
+![Task 4](https://github.com/pashtetrus33/pet-management-system/blob/main/Task%204.png)
 
 5. Выложить [историю команд](https://github.com/pashtetrus33/pet-management-system/blob/main/TerminalCommands.md) в терминале ubuntu
 
