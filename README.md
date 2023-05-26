@@ -199,7 +199,18 @@ UNION ALL SELECT  Name, Birthday, Commands FROM donkeys;
 11. Создать новую таблицу “молодые животные” в которую попадут все
     животные старше 1 года, но младше 3 лет и в отдельном столбце с точностью
     до месяца подсчитать возраст животных в новой таблице.
+```mysql    
+CREATE TEMPORARY TABLE all_animals AS
+    SELECT *, 'Собаки' as class FROM dogs
+    UNION SELECT *, 'Кошки' AS class FROM cats
+    UNION SELECT *, 'Хомяки' AS class FROM hamsters
+    UNION SELECT *, 'Лошади' AS class FROM horses
+    UNION SELECT *, 'Ослы' AS class FROM donkeys;
 
+CREATE TABLE young_animal AS
+SELECT Name, Birthday, Commands, class, TIMESTAMPDIFF(MONTH, Birthday, CURDATE()) AS Age_in_month
+FROM all_animals WHERE Birthday BETWEEN ADDDATE(curdate(), INTERVAL -3 YEAR) AND ADDDATE(CURDATE(), INTERVAL -1 YEAR);
+```
 12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
     прошлую принадлежность к старым таблицам.
 
