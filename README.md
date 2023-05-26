@@ -207,13 +207,38 @@ CREATE TEMPORARY TABLE all_animals AS
     UNION SELECT *, 'Лошади' AS class FROM horses
     UNION SELECT *, 'Ослы' AS class FROM donkeys;
 
-CREATE TABLE young_animal AS
+CREATE TABLE young_animals AS
 SELECT Name, Birthday, Commands, class, TIMESTAMPDIFF(MONTH, Birthday, CURDATE()) AS Age_in_month
 FROM all_animals WHERE Birthday BETWEEN ADDDATE(curdate(), INTERVAL -3 YEAR) AND ADDDATE(CURDATE(), INTERVAL -1 YEAR);
 ```
 12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
     прошлую принадлежность к старым таблицам.
-
+```mysql
+SELECT h.Name, h.Birthday, h.Commands, pa.Pack_animal_class, ya.Age_in_month 
+FROM horses h
+LEFT JOIN young_animals ya ON ya.Name = h.Name
+LEFT JOIN pack_animals pa ON pa.Id = h.Pack_animal_id
+UNION 
+SELECT d.Name, d.Birthday, d.Commands, pa.Pack_animal_class, ya.Age_in_month 
+FROM donkeys d 
+LEFT JOIN young_animals ya ON ya.Name = d.Name
+LEFT JOIN pack_animals pa ON pa.Id = d.Pack_animal_id
+UNION
+SELECT c.Name, c.Birthday, c.Commands, p.Pet_class, ya.Age_in_month 
+FROM cats c
+LEFT JOIN young_animals ya ON ya.Name = c.Name
+LEFT JOIN pets p ON p.Id = c.Pet_id
+UNION
+SELECT d.Name, d.Birthday, d.Commands, p.Pet_class, ya.Age_in_month 
+FROM dogs d
+LEFT JOIN young_animals ya ON ya.Name = d.Name
+LEFT JOIN pets p ON p.Id = d.Pet_id
+UNION
+SELECT hm.Name, hm.Birthday, hm.Commands, p.Pet_class, ya.Age_in_month 
+FROM hamsters hm
+LEFT JOIN young_animals ya ON ya.Name = hm.Name
+LEFT JOIN pets p ON p.Id = hm.Pet_id;
+```
 13. Создать класс с Инкапсуляцией методов и наследованием по диаграмме. 
 
 14. Написать программу, имитирующую работу реестра домашних животных.
