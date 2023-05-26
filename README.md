@@ -56,13 +56,13 @@ CREATE DATABASE mans_friends;
 ```mysql
 USE mans_friends;
 
-CREATE TABLE animal
+CREATE TABLE animals
 (
 	Id INT AUTO_INCREMENT PRIMARY KEY,  
 	Animal_class VARCHAR(50)
 );
 
-INSERT INTO animal (Animal_class)
+INSERT INTO animals (Animal_class)
 VALUES ('pets'),
 ('pack animals');  
 
@@ -71,7 +71,7 @@ CREATE TABLE pets
 	Id INT AUTO_INCREMENT PRIMARY KEY,
     Pet_class VARCHAR (50),
     Animal_id INT,
-    FOREIGN KEY (Animal_id) REFERENCES animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (Animal_id) REFERENCES animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO pets (Pet_class, Animal_id)
@@ -84,7 +84,7 @@ CREATE TABLE pack_animals
 	Id INT AUTO_INCREMENT PRIMARY KEY,
     Pack_animal_class VARCHAR (50),
     Animal_id INT,
-    FOREIGN KEY (Animal_id) REFERENCES animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (Animal_id) REFERENCES animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO pack_animals (Pack_animal_class, Animal_id)
@@ -93,7 +93,7 @@ VALUES ('Horse', 2),
 ('Donkey', 2); 
     
 
-CREATE TABLE dog
+CREATE TABLE dogs
 (       
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(50), 
@@ -103,7 +103,7 @@ CREATE TABLE dog
     Foreign KEY (Pet_id) REFERENCES pets (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE cat
+CREATE TABLE cats
 (       
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(50), 
@@ -113,7 +113,7 @@ CREATE TABLE cat
     Foreign KEY (Pet_id) REFERENCES pets (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE hamster
+CREATE TABLE hamsters
 (       
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(50), 
@@ -123,7 +123,7 @@ CREATE TABLE hamster
     Foreign KEY (Pet_id) REFERENCES pets (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE horse
+CREATE TABLE horses
 (       
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(50), 
@@ -133,7 +133,7 @@ CREATE TABLE horse
     Foreign KEY (Pack_animal_id) REFERENCES pack_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE camel
+CREATE TABLE camels
 (       
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(50), 
@@ -143,7 +143,7 @@ CREATE TABLE camel
     Foreign KEY (Pack_animal_id) REFERENCES pack_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE donkey
+CREATE TABLE donkeys
 (       
     Id INT AUTO_INCREMENT PRIMARY KEY, 
     Name VARCHAR(50), 
