@@ -49,11 +49,110 @@ ___
 7. В подключенном MySQL репозитории создать базу данных “Друзья человека”
 
 ``` mysql 
-CREATE DATABASE Mans_friends; 
+CREATE DATABASE mans_friends; 
 ```
 
 8. Создать таблицы с иерархией из диаграммы в БД
+```mysql
+USE mans_friends;
 
+CREATE TABLE animal
+(
+	Id INT AUTO_INCREMENT PRIMARY KEY,  
+	Animal_class VARCHAR(50)
+);
+
+INSERT INTO animal (Animal_class)
+VALUES ('pets'),
+('pack animals');  
+
+CREATE TABLE pets
+(
+	Id INT AUTO_INCREMENT PRIMARY KEY,
+    Pet_class VARCHAR (50),
+    Animal_id INT,
+    FOREIGN KEY (Animal_id) REFERENCES animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+INSERT INTO pets (Pet_class, Animal_id)
+VALUES ('Dog', 1),
+('Cat', 1),  
+('Hamster', 1); 
+
+CREATE TABLE pack_animals
+(
+	Id INT AUTO_INCREMENT PRIMARY KEY,
+    Pack_animal_class VARCHAR (50),
+    Animal_id INT,
+    FOREIGN KEY (Animal_id) REFERENCES animal (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+INSERT INTO pack_animals (Pack_animal_class, Animal_id)
+VALUES ('Horse', 2),
+('Camel', 2),  
+('Donkey', 2); 
+    
+
+CREATE TABLE dog
+(       
+    Id INT AUTO_INCREMENT PRIMARY KEY, 
+    Name VARCHAR(50), 
+    Birthday DATE,
+    Commands VARCHAR(50),
+    Pet_id int,
+    Foreign KEY (Pet_id) REFERENCES pets (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE cat
+(       
+    Id INT AUTO_INCREMENT PRIMARY KEY, 
+    Name VARCHAR(50), 
+    Birthday DATE,
+    Commands VARCHAR(50),
+    Pet_id int,
+    Foreign KEY (Pet_id) REFERENCES pets (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE hamster
+(       
+    Id INT AUTO_INCREMENT PRIMARY KEY, 
+    Name VARCHAR(50), 
+    Birthday DATE,
+    Commands VARCHAR(50),
+    Pet_id int,
+    Foreign KEY (Pet_id) REFERENCES pets (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE horse
+(       
+    Id INT AUTO_INCREMENT PRIMARY KEY, 
+    Name VARCHAR(50), 
+    Birthday DATE,
+    Commands VARCHAR(50),
+    Pack_animal_id int,
+    Foreign KEY (Pack_animal_id) REFERENCES pack_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE camel
+(       
+    Id INT AUTO_INCREMENT PRIMARY KEY, 
+    Name VARCHAR(50), 
+    Birthday DATE,
+    Commands VARCHAR(50),
+    Pack_animal_id int,
+    Foreign KEY (Pack_animal_id) REFERENCES pack_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE donkey
+(       
+    Id INT AUTO_INCREMENT PRIMARY KEY, 
+    Name VARCHAR(50), 
+    Birthday DATE,
+    Commands VARCHAR(50),
+    Pack_animal_id int,
+    Foreign KEY (Pack_animal_id) REFERENCES pack_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+```
 
 9. Заполнить низкоуровневые таблицы именами(животных), командами которые они выполняют и датами рождения
 
