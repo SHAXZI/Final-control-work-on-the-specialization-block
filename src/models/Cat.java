@@ -1,2 +1,5 @@
-package models;public class Cat {
+package models;
+
+public class Cat extends Pet {
+
 }

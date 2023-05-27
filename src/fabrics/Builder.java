@@ -5,13 +5,13 @@ import models.Pet;
 
 import java.time.LocalDate;
 
-public abstract class PetBuilder {
+public abstract class Builder {
     protected abstract Pet createNewPet(PetType type);
 
-    public Pet createPet(PetType type, String nickname, LocalDate date) {
+    public Pet createPet(PetType type, String name, LocalDate date) {
 
         Pet pet = createNewPet(type);
-        pet.setNickName(nickname);
+        pet.setName(name);
         pet.setBirthday(date);
         return pet;
     }

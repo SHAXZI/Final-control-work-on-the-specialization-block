@@ -1,18 +1,5 @@
 package models;
 
-public class Donkey extends Pack_animal{
-    @Override
-    public void eat() {
-        System.out.println("Ослик питается");
-    }
+public class Horse extends Pack_animal{
 
-    @Override
-    public void breath() {
-        System.out.println("Ослик дышит");
-    }
-
-    @Override
-    public void multiply() {
-        System.out.println("Ослик размножается");
-    }
 }
