@@ -1,2 +1,4 @@
-package models;public class Donkey {
+package models;
+
+public class Donkey extends Pack_animal{
 }

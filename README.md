@@ -239,8 +239,7 @@ FROM hamsters hm
 LEFT JOIN young_animals ya ON ya.Name = hm.Name
 LEFT JOIN pets p ON p.Id = hm.Pet_id;
 ```
-13. Создать класс с Инкапсуляцией методов и наследованием по диаграмме. 
-
+13. [Создать класс с Инкапсуляцией методов и наследованием по диаграмме.](https://github.com/pashtetrus33/pet-management-system/tree/main/src/models)
 14. Написать программу, имитирующую работу реестра домашних животных.
    В программе должен быть реализован следующий функционал:
    14.1 Завести новое животное
